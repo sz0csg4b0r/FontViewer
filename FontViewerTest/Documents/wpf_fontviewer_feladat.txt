@@ -1,16 +1,35 @@
-WPF FontViewer alkalmazás, amely rendszerbetűtípusokat listázza, mintaszöveggel demonstrálja őket különböző méretekben, kétirányú bindinggel frissítve a kijelölést.
+WPF FontViewer alkalmazás, amely rendszerbetűtípusokat listázza, 
+mintaszöveggel demonstrálja őket különböző méretekben, kétirányú bindinggel
+frissítve a kijelölést.
 
 Címszavakban kulcspontok
-- Layout építés: DockPanel sorrenddel (Top, Bottom, Left, maradék), WrapPanel gomb+szöveghez, StackPanel függőleges TextBlock-okhoz.
-- Adatforrás: ListBox ItemsSource="{x:Static Fonts.SystemFontFamilies}" – rendszerbetűk statikus listája.
-​- Binding: FontFamily="{Binding ElementName=FontList, Path=SelectedItem}" – SelectedItem-et köti TextBlock-okhoz, automatikus frissítés.
-​- UI elemek: TextBox mintaszöveg (kétirányú), fix WindowStyle="None", CenterScreen indítás.
-​- Eseménykezelés: exitBtn_Click code-behind-ban szükséges a bezáráshoz (Application.Current.Shutdown();)
+- Layout építés: DockPanel sorrenddel (Top, Bottom, Left, maradék), WrapPanel gomb+szöveghez,
+StackPanel függőleges TextBlock-okhoz.
+
+
+- Adatforrás: ListBox ItemsSource="{x:Static Fonts.SystemFontFamilies}" – rendszerbetűk 
+statikus listája.
+​
+
+- Binding: FontFamily="{Binding ElementName=FontList, Path=SelectedItem}" – SelectedItem-et 
+köti TextBlock-okhoz, automatikus frissítés.
+​
+
+- UI elemek: TextBox mintaszöveg (kétirányú), fix WindowStyle="None", CenterScreen indítás.
+​
+
+- Eseménykezelés: exitBtn_Click code-behind-ban szükséges a bezáráshoz
+(Application.Current.Shutdown();)
 
 Fontosabb elemek:
 Ez a feladat bemutatja a DockPanel sorrend-alapú elrendezését, 
-a statikus rendszerforrások (mint Fonts) használatát ListBox-ban, valamint a kétirányú ElementName bindinget, ami dinamikusan frissíti a UI-t kijelöléskor – Lehetséges lépések Window + ListBox, aztán DockPanelek hozzáadása sorrendben, végül binding + TextBlock-ok tesztelése különböző szövegekkel.
-A DockPanelnál kritikus a XAML-sorrend: Top/Bottom/Left elemek előbb foglalnak helyet, utolsó tölt ki maradékot (LastChildFill alapértelmezett). Bindingnél ElementName-rel hivatkozz pontos x:Name-re (pl. FontList), különben hibás lesz a Path=SelectedItem.
+a statikus rendszerforrások (mint Fonts) használatát ListBox-ban, valamint a kétirányú 
+ElementName bindinget, ami dinamikusan frissíti a UI-t kijelöléskor – Lehetséges lépések 
+Window + ListBox, aztán DockPanelek hozzáadása sorrendben, végül binding + TextBlock-ok 
+tesztelése különböző szövegekkel.
+A DockPanelnál kritikus a XAML-sorrend: Top/Bottom/Left elemek előbb foglalnak helyet, 
+utolsó tölt ki maradékot (LastChildFill alapértelmezett). Bindingnél ElementName-rel 
+hivatkozz pontos x:Name-re (pl. FontList), különben hibás lesz a Path=SelectedItem.
 
 Felépítés lépései
 1. Új WPF projekt Visual Studio-ban, MainWindow.xaml szerkesztése.
